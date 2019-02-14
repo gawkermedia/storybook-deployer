@@ -12,7 +12,7 @@ const { config, ...args } = parseArgs(packageJson);
 
 // get GIT url
 console.log('=> Getting the git remote URL');
-let GIT_URL = publishUtils.exec(
+let GIT_URL = args.customUrl ? args.customUrl : publishUtils.exec(
   `git config --get remote.${args.GIT_REMOTE}.url`
 );
 
