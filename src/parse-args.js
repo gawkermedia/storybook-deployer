@@ -77,6 +77,10 @@ const argv = yargs
     type: 'string',
     default: 'default'
   })
+  .option('custom-url', {
+    desc: 'Custom url for deployment',
+    type: 'string'
+  })
   .option('bucket-path', {
     desc: 'AWS bucket path to use for publishing',
     type: 'string'
@@ -92,6 +96,7 @@ module.exports = packageJson => {
       packageJson['storybook-deployer'] || defaultConfig
     ),
     SKIP_BUILD: Boolean(argv['existing-output-dir']),
+    CUSTOM_URL: argv['custom-url'],
     OUTPUT_DIR:
       argv.out ||
       argv['existing-output-dir'] ||
