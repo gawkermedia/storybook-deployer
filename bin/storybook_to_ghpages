@@ -12,12 +12,10 @@ const { config, ...args } = parseArgs(packageJson);
 
 // get GIT url
 console.log('=> Getting the git remote URL');
-console.log(`custom deploy url is ${args.customUrl}`);
-let GIT_URL = args.customUrl ? args.customUrl : publishUtils.exec(
+console.log(`custom deploy url is ${args.CUSTOM_URL}`);
+let GIT_URL = args.CUSTOM_URL ? args.CUSTOM_URL : publishUtils.exec(
   `git config --get remote.${args.GIT_REMOTE}.url`
 );
-
-console.log(GIT_URL);
 
 if (!GIT_URL) {
   console.log('This project is not configured with a remote git repo');
